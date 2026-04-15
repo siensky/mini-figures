@@ -1,4 +1,5 @@
 import type { Pokemon } from "../../types/pokemon";
+import RatingStars from "../rating-stars/RatingStars";
 
 export type FigureCardProps = {
     pokemon: Pokemon
@@ -10,7 +11,7 @@ function FigureCard({pokemon, rating}: FigureCardProps ){
     <div className="figure-card">
         <img src={pokemon.image} alt={pokemon.name} />
         <h3>{pokemon.name}</h3>
-        <h4>{rating}</h4>
+        <RatingStars value={rating} />
     </div>
   );
 }
