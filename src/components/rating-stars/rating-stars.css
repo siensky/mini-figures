@@ -1,0 +1,17 @@
+.star {
+    color: #ccc;
+    font-size: 22px;
+    cursor: default;
+  }
+  
+  .star.filled {
+    color: #FFD700;
+  }
+  
+  .star:hover {
+    transform: scale(1.1);
+  }
+  
+  .star.interactive {
+    cursor: pointer;
+  }
