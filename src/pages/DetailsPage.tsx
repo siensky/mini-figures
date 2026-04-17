@@ -3,34 +3,36 @@ import RatingStars from "../components/rating-stars/RatingStars";
 import { pokemons } from "../data/pokemon";
 import { useState } from "react";
 
+const getStoredRating = (id: number): number => {
+  const savedRating = localStorage.getItem(`pokemon-rating-${id}`);
+  return savedRating ? Number(savedRating) : 0;
+};
+
+const saveRating = (id: number, rating: number) => {
+  localStorage.setItem(`pokemon-rating-${id}`, String(rating));
+};
+
 function DetailsPage() {
-  const [isRatingOpen, setIsRatingOpen] = useState(false);
-  const [userRating, setUserRating] = useState<number>(() => getStoredRating(numericId));
-
-  const getStoredRating(id: number): number => {
-    const savedRating = localStorage.getItem(`pokemon-rating-${id}`)
-    return savedRating ? Number(savedRating) : 0 
-  }
-
-  const saveRating(id:number, rating: number) => {
-    localStorage.setItem(`pokemon-rating-${id}`, String(rating))
-  }
-
   const navigate = useNavigate();
-
   const { id } = useParams();
-  const numericId = Number(id);
 
+  const numericId = Number(id);
   const pokemon = pokemons.find((p) => p.id === numericId);
+
+  const [isRatingOpen, setIsRatingOpen] = useState(false);
+  const [userRating, setUserRating] = useState<number>(() =>
+    getStoredRating(numericId)
+  );
+
   if (!pokemon) return <div>Pokemon not found</div>;
+
+  const displayedRating = userRating ? userRating : pokemon.rating;
 
   function handleRating(newRating: number) {
     setUserRating(newRating);
     saveRating(pokemon.id, newRating);
     setIsRatingOpen(false);
   }
-
-  const displayedRating = userRating ? userRating : pokemon.rating;
 
   const toggleChange = () => {
     setIsRatingOpen(!isRatingOpen);
