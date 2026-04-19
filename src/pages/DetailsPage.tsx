@@ -3,14 +3,7 @@ import RatingStars from "../components/rating-stars/RatingStars";
 import { pokemons } from "../data/pokemon";
 import { useState } from "react";
 
-const getStoredRating = (id: number): number => {
-  const savedRating = localStorage.getItem(`pokemon-rating-${id}`);
-  return savedRating ? Number(savedRating) : 0;
-};
 
-const saveRating = (id: number, rating: number) => {
-  localStorage.setItem(`pokemon-rating-${id}`, String(rating));
-};
 
 function DetailsPage() {
   const navigate = useNavigate();
