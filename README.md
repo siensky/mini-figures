@@ -1,75 +1,66 @@
-# React + TypeScript + Vite
+# Mini Figures App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a mobile-first web application built as part of a LIA application assignment. The goal was to create a simple interface where users can browse a list of mini-figures, view detailed information, and rate figures.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application consists of two main views:
 
-## React Compiler
+* Catalog page:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+  * Displays a grid of figures
+  * Each figure shows image, name, and rating
 
-Note: This will impact Vite dev & build performances.
+* Details page:
 
-## Expanding the ESLint configuration
+  * Shows a larger image
+  * Displays name and description
+  * Includes a rating display
+  * Allows the user to set a personal rating
+  * Includes a "Back" button for navigation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Navigation between views is handled using React Router.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Rating functionality
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The rating system allows users to rate each figure using interactive stars.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* Ratings are saved in localStorage
+* Ratings persist after page reload
+* If a user rating exists, it is shown
+* If no user rating exists, a default rating is used
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+To manage ratings across the application, React Context is used.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* Avoids duplicating localStorage logic
+* Makes it easy to share rating state between pages
+* Keeps components cleaner and more focused on UI
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The context provides:
+
+* A function to get a rating with a fallback value
+* A function to update a rating
+
+## Data handling
+
+The figure data is stored locally in an array of objects.
+
+* Each figure includes id, name, image, description, and rating
+* No API is used
+
+This approach was chosen because the assignment did not require backend functionality, allowing focus on frontend structure and interaction.
+
+## Usage
+
+Run the project with:
+
+npm install
+npm run dev
+
+Once running, the user can:
+
+* Browse the catalog
+* Open a figure’s details
+* Set a rating
+
+The rating will be saved and reflected across the application.

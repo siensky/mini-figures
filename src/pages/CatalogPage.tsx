@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import FigureCard from "../components/figure-card/FigureCard.js";
 import { pokemons } from "../data/pokemon.js";
+import { useRatings } from "../context/RatingsContext.js";
 
 function CatalogPage() {
+    const { getRating } = useRatings()
+
   return (
     <>
       <div className="grid-container">
@@ -12,7 +15,7 @@ function CatalogPage() {
             <FigureCard
               key={pokemon.id}
               pokemon={pokemon}
-              rating={pokemon.rating}
+              rating={getRating(pokemon.id, pokemon.rating)}
             />
             </Link>
           </div>
