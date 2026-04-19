@@ -1,0 +1,13 @@
+.card-img {
+  display: block;
+  max-width: 90%;
+  height: auto;
+}
+
+.figure-card {
+border-top: 4px solid var(--color-blue);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+}

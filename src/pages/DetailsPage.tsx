@@ -3,6 +3,7 @@ import RatingStars from "../components/rating-stars/RatingStars";
 import { pokemons } from "../data/pokemon";
 import { useState } from "react";
 import { useRatings } from "../context/RatingsContext";
+import "../index.css";
 
 function DetailsPage() {
   const navigate = useNavigate();
@@ -26,13 +27,17 @@ function DetailsPage() {
 
   return (
     <div className="details-container">
-      <button onClick={() => navigate("/")}>Go back</button>
+      <button className="back-btn" onClick={() => navigate("/")}>
+        Go back
+      </button>
       <h2>{pokemon.name}</h2>
-      <img src={pokemon.image} alt={pokemon.name} />
+      <img className="details-img" src={pokemon.image} alt={pokemon.name} />
       <p>{pokemon.description}</p>
       <RatingStars value={getRating(pokemon.id, pokemon.rating)} />
 
-      <button onClick={toggleChange}>Rate</button>
+      <button className="rate-btn" onClick={toggleChange}>
+        Rate
+      </button>
 
       {isRatingOpen && (
         <div className="user-rating-container">
