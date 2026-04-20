@@ -1,29 +1,184 @@
 :root {
-  /* Backgrounds */
-  --color-bg: #f8fafc;
+  --color-bg: #fdfdfd;
   --color-surface: #ffffff;
-
-  /* Primary bright colors */
-  --color-red: #ef4444;
-  --color-yellow: #facc15;
-  --color-blue: #3b82f6;
-  --color-green: #22c55e;
-
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
-
-  /* Borders / UI */
+  --color-red: #ea5442;
+  --color-yellow: #fddb51;
+  --color-blue: #2c75ff;
+  --color-green: #67bc55;
+  --color-text: #333333;
+  --color-text-muted: #4a5568;
   --color-border: #e2e8f0;
+  --radius: 16px;
 
-  /* Shadows */
-  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --card-bg: linear-gradient(135deg, #ccdff6, #f3e8b5);
+}
 
-  /* Radius */
-  --radius: 12px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: var(--color-bg);
+  font-family: "Poppins", sans-serif;
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+.details-nav {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  justify-content: center;
+  width: 100vw;
+  background: white;
+  position: relative;
+  border-bottom: 4px solid var(--color-green);
+  box-shadow: 0 2px 10px rgba(195, 194, 194, 0.698);
+}
+
+.details-nav h1 {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--color-blue);
+  font-weight: normal;
+}
+
+.back-btn {
+  position: absolute;
+  left: 15px;
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.details-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.details-card {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  border: 3px solid var(--color-yellow);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(166, 164, 164, 0.824);
+}
+
+.img-container {
+  padding: 20px;
+  background: var(--card-bg);
+  display: flex;
+  justify-content: center;
+}
+
+.details-img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  background: white;
+  padding: 15px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.175);
+}
+
+.details-card p,
+.details-card .rating-container {
+  margin: 20px;
+}
+
+.description {
+  padding: 15px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background-color: #f8fafc;
+  font-size: 0.9rem;
+}
+
+.rating-container {
+  padding: 15px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-yellow);
+  background-color: #fffde7;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-container p {
+  font-size: 0.8rem;
+  color: var(--color-text);
+}
+
+.current-rating {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rating-open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.rate-btn {
+  background-color: var(--color-blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transform: opacity 0.2s;
+}
+
+.rate-btn.active {
+  background-color: var(--color-border);
+  color: var(--color-text-muted);
+  order: 10;
+}
+
+h3 {
+  color: var(--color-text);
+}
+
+.catalog-header {
+  border-bottom: 3px solid var(--color-red);
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.catalog-header h1 {
+  font-weight: 200;
+  text-align: center;
+  color: var(--color-blue);
+  font-size: large;
+  margin: 15px;
+}
+
+.catalog-header p {
+  font-weight: 100;
+  font-size: small;
+  text-align: center;
+  color: var(--color-text-muted);
 }
 
 .grid-container {
@@ -39,32 +194,4 @@ body {
 
 .figure-card-link {
   text-decoration: none;
-}
-
-.back-btn {
-  background-color: var(--color-blue);
-  color: white;
-  border: 0;
-  border-radius: var(--radius);
-  padding: 10px 40px 10px 40px;
-  font-size: 15px;
-}
-
-.rate-btn {
-  background-color: var(--color-red);
-  color: white;
-  border: 0;
-  border-radius: var(--radius);
-  padding: 10px 40px 10px 40px;
-  font-size: 15px;
-}
-
-h3 {
-  color: var(--color-text);
-}
-
-.details-img {
-  display: block;
-  max-width: 90%;
-  height: auto;
 }

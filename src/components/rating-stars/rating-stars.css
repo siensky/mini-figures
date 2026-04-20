@@ -1,22 +1,38 @@
+.rating {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+}
+
 .star {
-  color: #ccc;
-  font-size: 22px;
+  color: #b0b1b2;
+  font-size: 18px;
   cursor: default;
+  transition: transform 0.3s ease;
+  -webkit-text-stroke: 2px #b0b1b2;
+  color: transparent;
+  margin: 3px 0;
 }
 
 .star.filled {
   color: var(--color-yellow);
+  -webkit-text-stroke: 1px var(--color-yellow);
+}
+
+.rating-open .star {
+  font-size: 40px;
 }
 
 .star:hover {
-  transform: scale(1.1);
+    color: var(--color-yellow);
+    -webkit-text-stroke: 1px var(--color-yellow);
 }
 
 .star.interactive {
   cursor: pointer;
-}
-
-span {
-  text-decoration: none;
+  font-size: 35px;
+  margin: 5px 0;
 }
 

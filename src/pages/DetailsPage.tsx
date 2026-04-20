@@ -26,24 +26,45 @@ function DetailsPage() {
   };
 
   return (
-    <div className="details-container">
-      <button className="back-btn" onClick={() => navigate("/")}>
-        Go back
-      </button>
-      <h2>{pokemon.name}</h2>
-      <img className="details-img" src={pokemon.image} alt={pokemon.name} />
-      <p>{pokemon.description}</p>
-      <RatingStars value={getRating(pokemon.id, pokemon.rating)} />
-
-      <button className="rate-btn" onClick={toggleChange}>
-        Rate
-      </button>
-
-      {isRatingOpen && (
-        <div className="user-rating-container">
-          <RatingStars value={0} interactive={true} onChange={handleRating} />
+    <div className="details-page">
+      <nav className="details-nav">
+        <button className="back-btn" onClick={() => navigate("/")}>
+          ⬅ Back
+        </button>
+        <h1>{pokemon.name}</h1>
+      </nav>
+      <div className="details-card">
+        <div className="img-container">
+          <img className="details-img" src={pokemon.image} alt={pokemon.name} />
         </div>
-      )}
+
+        <p className="description">{pokemon.description}</p>
+
+        <div className="rating-container">
+          <div className="current-rating">
+            <p>Current rating:</p>
+            <RatingStars value={getRating(pokemon.id, pokemon.rating)} />
+          </div>
+
+          <button
+            className={`rate-btn${isRatingOpen ? " active" : ""} `}
+            onClick={toggleChange}
+          >
+            {isRatingOpen ? "Cancel" : "Rate This Pokemon"}
+          </button>
+
+          {isRatingOpen && (
+            <div className="rating-open">
+              <p>Tap a star to rate:</p>
+              <RatingStars
+                value={0}
+                interactive={true}
+                onChange={handleRating}
+              />
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
