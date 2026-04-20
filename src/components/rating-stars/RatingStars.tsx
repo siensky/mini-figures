@@ -2,7 +2,7 @@ import "./rating-stars.css";
 
 type RatingProps = {
   value: number;
-  interactive: boolean;
+  interactive?: boolean;
   onChange?: (rating: number) => void;
 };
 
