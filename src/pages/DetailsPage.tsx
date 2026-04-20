@@ -4,6 +4,8 @@ import { pokemons } from "../data/pokemon";
 import { useState } from "react";
 import { useRatings } from "../context/RatingsContext";
 import "../index.css";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function DetailsPage() {
   const navigate = useNavigate();
@@ -31,7 +33,8 @@ function DetailsPage() {
     <div className="details-page">
       <nav className="details-nav">
         <button className="back-btn" onClick={() => navigate("/")}>
-          ⬅ Back
+          <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight: "4px" }} />
+          Back
         </button>
         <h1>{pokemon.name}</h1>
       </nav>
