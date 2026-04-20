@@ -17,8 +17,10 @@ function DetailsPage() {
   if (pokemon === undefined) return <div>Pokemon not found</div>;
 
   function handleRating(newRating: number) {
-    ratePokemon(pokemon.id, newRating);
-    setIsRatingOpen(false);
+    if (pokemon) {
+      ratePokemon(pokemon.id, newRating);
+      setIsRatingOpen(false);
+    }
   }
 
   const toggleChange = () => {
