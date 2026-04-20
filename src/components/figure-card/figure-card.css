@@ -1,28 +1,37 @@
 .figure-card {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  padding: 15px;
+  background-color: white;
   align-items: center;
   justify-content: space-around;
   border-radius: var(--radius);
-  box-shadow: 10px 1px 8px var(--color-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  transition: ease 0.3s;
+}
+
+.figure-card:hover {
+  scale: 1.03;
+  border: 2px solid var(--color-blue);
 }
 
 .card-img {
-  display: block;
-  max-width: 90%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  padding: 15px;
   height: auto;
   border-radius: var(--radius);
   background: var(--card-bg);
+  margin-bottom: 12px;
 }
 
 .figure-card h3 {
   font-weight: 200;
   padding: 8px;
-  background-color: var(--color-blue);
-  border-radius: var(--radius);
-  color: var(--color-bg);
-  font-size: 12px;
-  width: 70%;
-  text-align: center;
+  color: var(--color-blue);
+  font-size: 14px;
+  width: auto;
+  margin-bottom: 8px;
 }
