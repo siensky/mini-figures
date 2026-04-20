@@ -14,7 +14,7 @@ function DetailsPage() {
   const numericId = Number(id);
   const pokemon = pokemons.find((p) => p.id === numericId);
 
-  if (!pokemon) return <div>Pokemon not found</div>;
+  if (pokemon === undefined) return <div>Pokemon not found</div>;
 
   function handleRating(newRating: number) {
     ratePokemon(pokemon.id, newRating);
